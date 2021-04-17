@@ -1,17 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
+
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {data} from './books';
+import Book from './Book';
+import {greeting} from './testing/testing';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const title = 'I love you to the moon and back';
+const author = 'William Shake';
+const img = 'https://freepngimg.com/static/img/twitter.png';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function BookList () {
+  console.log(greeting);
+return(
+  <section className="booklist">
+    {data.map((book) => {
+      
+      return <Book key={book.id} {...book}></Book>;
+    })}
+  </section>
+)
+}
+
+
+
+
+ReactDom.render(<BookList/>, document.getElementById('root'));
